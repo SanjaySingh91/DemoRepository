@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Contact</title>
+</head>
+<body>
+<div align="center">
+    <h1>Update Contact</h1><br/>
+    <div th:if="${session.messege}">
+       <span th:text="${session.messege}"></span> 
+       
+       <th:block th:text="${#session.removeAttribute('messege')}"></th:block>
+    </div>
+         
+    <form action="#" th:action="@{/user/process-update}" method="post" th:object="${contact}">
+      
+      <input type="hidden" th:value="${contact.contactId}" name="contactId"/>
+      
+      <table style="border-radius: 2px;">
+      <tr>
+      <td>
+        <label>Name:</label>
+      </td>
+      <td>
+        <input type="text" th:value="${contact.custName}" name="custName" id="custName"/><br/>
+      </td>
+      </tr>
+      
+       <tr>
+      <td>
+        <label>E-mail:</label>
+      </td>
+      <td>
+        <input type="text" th:value="${contact.email}" name="email" id="email"/><br/>
+      </td>
+      </tr>
+ 		        
+        <tr>
+        <td>
+         <label>Mobile No:</label>
+        </td>
+        <td>
+        <input type="text" th:value="${contact.mobileNo}" name="mobileNo" id="mobileNo"/><br/>
+        </td>
+        </tr>
+ 
+ 		<tr>
+ 		<td>
+        <label>City:</label>
+ 		</td>
+ 		<td>
+        <input type="text" th:value="${contact.custCity}" name="custCity" id="custCity"/><br/>
+ 		</td>
+ 		</tr>
+ 
+ 		<tr>
+ 		<td>
+        <label>Address:</label>
+ 		</td>
+ 		<td>
+        <input type="text" th:value="${contact.address}" name="address" id="address"/><br/>
+ 		</td>
+ 		</tr>
+       
+       <tr>
+       <td>
+        <button type="submit">Update</button>  
+       </td>
+       <td style="text-align: right;">
+         <a th:href="@{/user/index}" href="#">Home</a>
+       </td>
+       </tr>
+        </table>  
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Access Denied</title>
+</head>
+<body>
+
+<h1>Sorry, You don't have permission to access this page</h1>
+
+<div>
+
+ <ul>
+ <a th:href="@{/}" href="#">Home</a>
+</ul>
+
+ <ul>
+ <a th:href="@{/signin}" href="#">Login</a>
+</ul>
+
+ <ul>
+ <a th:href="@{/signup}" href="#">SignUp</a>
+</ul>
+
+<ul>
+ <a th:href="@{/showAllUsers}" href="#">display All Users</a>
+</ul>
+
+</div>
+
+
+</body>
+</html>

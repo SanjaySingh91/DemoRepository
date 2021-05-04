@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title th:text="${title}">Base Html</title>
+</head>
+
+<body>
+
+<h1>User Dashboard</h1>
+<!--<div><span th:text="${user.username}"></span></div>-->
+
+<div>
+
+ <ul>
+ <a th:href="@{/user/addContact}" href="#">add contact</a>
+</ul>
+
+ <ul>
+ <a th:href="@{/user/showContact}" href="#">show contact</a>
+</ul>
+
+<ul>
+ <a th:href="@{/logout}" href="#">Logout</a>
+</ul>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Show Users</title>
+
+</head>
+<body>
+<div align="center">
+    <h1>Display All Users</h1>
+
+<!--<form action="#" th:action="@{/register}" method="post" th:object="${user}">
+  <input type="search" id="query" name="q" placeholder="Search...">
+  <button>Search</button>
+</form>-->
+
+<!--<form th:object="${user}" th:action="@{/searchUser}" method="get">
+        <input type="text" name="search" id="search" th:value="${search}"/>
+        <input type="submit" value="Search"/>
+        
+</form>   -->
+
+<form th:object="${user}" th:action="@{/searchUser}" method="post">
+        <input type="text" name="username" id="username"/>
+        <input type="submit" value="Search"/>
+        
+</form>       
+
+<table border="1">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Name </th>
+            <th> Status </th>
+            <th> Role </th>
+            <th> Email </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${userList.empty}">
+            <td colspan="2"> No User Available </td>
+        </tr>
+        <tr th:each="user : ${userList}">
+            <td><span th:text="${user.userId}"></span></td>
+            <td><span th:text="${user.username}"></span></td>
+            <td><span th:text="${user.status}"></span></td>
+            <td><span th:text="${user.role}"></span></td>
+            <td><span th:text="${user.email}"></span></td>
+        </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/}" href="#">Home</a>
+
+</div>
+</body>
+</html>

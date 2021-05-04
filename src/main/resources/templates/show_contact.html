@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Show Contact</title>
+
+</head>
+<body>
+<div align="center">
+    <h1>Display All Contacts</h1>
+    <div th:if="${session.messege}">
+       <span th:text="${session.messege}"></span> 
+       
+       <th:block th:text="${#session.removeAttribute('messege')}"></th:block>
+    </div>
+
+<form th:object="${user}" th:action="@{/searchUser}" method="get">
+        <input type="text" name="search" id="search" th:value="${search}"/>
+        <input type="submit" value="Search"/>
+        
+</form>       
+
+<table border="1">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Name </th>
+            <th> Email </th>          
+            <th> Mobile No </th>
+            <th> City </th>
+            <th> Address </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${contactList.empty}">
+            <td colspan="2"> No Contact Available </td>
+        </tr>
+        <tr th:each="contact : ${contactList}">
+            <td><span th:text="${contact.contactId}"></span></td>
+            <td><span th:text="${contact.custName}"></span></td>
+            <td><span th:text="${contact.email}"></span></td>
+            <td><span th:text="${contact.mobileNo}"></span></td>
+            <td><span th:text="${contact.custCity}"></span></td>
+            <td><span th:text="${contact.address}"></span></td>
+            <td>
+             <a href="#" th:href="@{'/user/deleteContact/'+${contact.contactId}}">Delete</a>
+            <form method="post" th:action="@{'/user/update-contact/'+${contact.contactId}}">
+            <button>Update</button>                     
+            </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/user/index}" href="#">Home</a>
+
+</div>
+</body>
+</html>
